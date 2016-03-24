@@ -1,0 +1,540 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface>
+  <object class="tk.Frame" id="frame_main">
+    <property name="height">400</property>
+    <property name="width">800</property>
+    <bind add="" handler="" sequence="" />
+    <layout>
+      <property name="column">0</property>
+      <property name="ipadx">0</property>
+      <property name="ipady">0</property>
+      <property name="propagate">True</property>
+      <property name="row">0</property>
+    </layout>
+    <child>
+      <object class="tk.Frame" id="frame_select_target">
+        <property name="height">200</property>
+        <property name="width">200</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="ipadx">3</property>
+          <property name="ipady">6</property>
+          <property name="propagate">True</property>
+          <property name="row">0</property>
+          <property name="sticky">nw</property>
+          <rows>
+            <row id="0">
+              <property name="minsize">0</property>
+            </row>
+          </rows>
+        </layout>
+        <child>
+          <object class="tk.Entry" id="entry_url">
+            <layout>
+              <property name="column">1</property>
+              <property name="ipadx">60</property>
+              <property name="ipady">0</property>
+              <property name="propagate">True</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Entry" id="entry_ip_address">
+            <layout>
+              <property name="column">1</property>
+              <property name="ipadx">60</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="label_url">
+            <property name="text" translatable="yes">URL</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">1</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="label_ip_address">
+            <property name="text" translatable="yes">IP</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+              <property name="sticky">e</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Button" id="button_lock_url">
+            <property name="command">on_button_lock_url_clicked</property>
+            <property name="text" translatable="yes">Lock on</property>
+            <layout>
+              <property name="column">2</property>
+              <property name="propagate">True</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Button" id="button_lock_ip_address">
+            <property name="command">on_button_lock_ip_address_clicked</property>
+            <property name="text" translatable="yes">Lock on</property>
+            <layout>
+              <property name="column">2</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="label_select_target">
+            <property name="text" translatable="yes">1. Select your target</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Frame" id="frame_ready">
+        <property name="height">200</property>
+        <property name="width">200</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="ipadx">16</property>
+          <property name="propagate">True</property>
+          <property name="row">0</property>
+          <property name="sticky">w</property>
+          <rows>
+            <row id="0">
+              <property name="minsize">0</property>
+            </row>
+          </rows>
+        </layout>
+        <child>
+          <object class="tk.Button" id="button_ready">
+            <property name="command">on_button_ready_clicked</property>
+            <property name="text" translatable="yes">Fire!</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="ipadx">37</property>
+              <property name="propagate">True</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="label_ready">
+            <property name="text" translatable="yes">3. Ready?</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="ipadx">0</property>
+              <property name="ipady">0</property>
+              <property name="propagate">True</property>
+              <property name="row">0</property>
+              <property name="sticky">w</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Frame" id="frame_selected_target">
+        <property name="height">200</property>
+        <property name="width">300</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">1</property>
+          <property name="sticky">w</property>
+        </layout>
+        <child>
+          <object class="tk.Label" id="label_selected_target">
+            <property name="text" translatable="yes">Selected target</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="label_selected_target_value">
+            <property name="text" translatable="yes">None selected</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Frame" id="frame_attack_options">
+        <property name="height">200</property>
+        <property name="width">200</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="ipadx">10</property>
+          <property name="ipady">3</property>
+          <property name="padx">5</property>
+          <property name="propagate">True</property>
+          <property name="row">2</property>
+          <rows>
+            <row id="0">
+              <property name="minsize">0</property>
+            </row>
+          </rows>
+        </layout>
+        <child>
+          <object class="tk.Label" id="label_timeout">
+            <property name="text" translatable="yes">Timeout</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="label_http_subsite">
+            <property name="state">disabled</property>
+            <property name="text" translatable="yes">HTTP Subsite</property>
+            <layout>
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="label_message">
+            <property name="text" translatable="yes">TCP / UDP message</property>
+            <layout>
+              <property name="column">2</property>
+              <property name="propagate">True</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Entry" id="entry_timeout">
+            <property name="text" translatable="yes">9001</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Entry" id="entry_http_subsite">
+            <property name="state">disabled</property>
+            <property name="text" translatable="yes">/</property>
+            <layout>
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Entry" id="entry_message">
+            <property name="text" translatable="yes">Random message</property>
+            <layout>
+              <property name="column">2</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="label_options">
+            <property name="text" translatable="yes">3. Options</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="ipadx">0</property>
+              <property name="ipady">0</property>
+              <property name="propagate">True</property>
+              <property name="row">0</property>
+              <property name="sticky">nw</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Entry" id="entry_port">
+            <property name="text" translatable="yes">80</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">4</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Entry" id="entry_threads">
+            <property name="text" translatable="yes">1</property>
+            <layout>
+              <property name="column">2</property>
+              <property name="propagate">True</property>
+              <property name="row">4</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Checkbutton" id="checkbutton_wait">
+            <property name="text" translatable="yes">Wait for reply</property>
+            <layout>
+              <property name="column">3</property>
+              <property name="propagate">True</property>
+              <property name="row">4</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Scale" id="scale_speed">
+            <property name="orient">horizontal</property>
+            <layout>
+              <property name="column">4</property>
+              <property name="columnspan">1</property>
+              <property name="ipadx">52</property>
+              <property name="ipady">7</property>
+              <property name="propagate">True</property>
+              <property name="row">4</property>
+              <property name="rowspan">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="label_port">
+            <property name="text" translatable="yes">Port</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">5</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="label_method">
+            <property name="text" translatable="yes">Method</property>
+            <layout>
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">5</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="label_threads">
+            <property name="text" translatable="yes">Threads</property>
+            <layout>
+              <property name="column">2</property>
+              <property name="propagate">True</property>
+              <property name="row">5</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="label_speed">
+            <property name="text" translatable="yes">&lt;&lt; faster     Speed     slower &gt;&gt;</property>
+            <layout>
+              <property name="column">4</property>
+              <property name="propagate">True</property>
+              <property name="row">5</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Combobox" id="combobox_method">
+            <layout>
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">4</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Frame" id="frame_status">
+        <property name="height">200</property>
+        <property name="width">200</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">3</property>
+          <property name="sticky">w</property>
+        </layout>
+        <child>
+          <object class="tk.Label" id="label_status">
+            <property name="text" translatable="yes">Status</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">0</property>
+              <property name="sticky">nw</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="label_idle">
+            <property name="text" translatable="yes">Idle</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="label_connecting">
+            <property name="text" translatable="yes">Connecting</property>
+            <layout>
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="label_requesting">
+            <property name="text" translatable="yes">Requesting</property>
+            <layout>
+              <property name="column">2</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="label_downloading">
+            <property name="text" translatable="yes">Downloading</property>
+            <layout>
+              <property name="column">3</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="label_downloaded">
+            <property name="text" translatable="yes">Downloaded</property>
+            <layout>
+              <property name="column">4</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="label_requested">
+            <property name="text" translatable="yes">Requested</property>
+            <layout>
+              <property name="column">5</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="label_failed">
+            <property name="text" translatable="yes">Failed</property>
+            <layout>
+              <property name="column">6</property>
+              <property name="propagate">True</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="label_idle_value">
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">3</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="label_connecting_value">
+            <layout>
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">3</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="label_requesting_value">
+            <layout>
+              <property name="column">2</property>
+              <property name="propagate">True</property>
+              <property name="row">3</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="label_downloading_value">
+            <layout>
+              <property name="column">3</property>
+              <property name="propagate">True</property>
+              <property name="row">3</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="label_downloaded_value">
+            <layout>
+              <property name="column">4</property>
+              <property name="propagate">True</property>
+              <property name="row">3</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="label_requested_value">
+            <layout>
+              <property name="column">5</property>
+              <property name="propagate">True</property>
+              <property name="row">3</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="tk.Label" id="label_failed_value">
+            <layout>
+              <property name="column">6</property>
+              <property name="propagate">True</property>
+              <property name="row">3</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Separator" id="status_separator">
+            <property name="orient">horizontal</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="columnspan">5</property>
+              <property name="ipadx">158</property>
+              <property name="propagate">True</property>
+              <property name="row">1</property>
+              <property name="sticky">se</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
