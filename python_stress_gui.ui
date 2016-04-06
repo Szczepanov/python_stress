@@ -41,6 +41,7 @@
         </child>
         <child>
           <object class="tk.Entry" id="entry_ip_address">
+            <property name="text" translatable="yes">127.0.0.1</property>
             <layout>
               <property name="column">1</property>
               <property name="ipadx">60</property>
@@ -108,10 +109,10 @@
     <child>
       <object class="tk.Frame" id="frame_ready">
         <property name="height">200</property>
-        <property name="width">200</property>
+        <property name="width">150</property>
         <layout>
           <property name="column">1</property>
-          <property name="ipadx">16</property>
+          <property name="ipadx">50</property>
           <property name="propagate">True</property>
           <property name="row">0</property>
           <property name="sticky">w</property>
@@ -183,7 +184,7 @@
     <child>
       <object class="tk.Frame" id="frame_attack_options">
         <property name="height">200</property>
-        <property name="width">200</property>
+        <property name="width">167</property>
         <layout>
           <property name="column">0</property>
           <property name="ipadx">10</property>
@@ -305,6 +306,7 @@
         <child>
           <object class="tk.Scale" id="scale_speed">
             <property name="orient">horizontal</property>
+            <property name="variable">string:scaleValue</property>
             <layout>
               <property name="column">4</property>
               <property name="columnspan">1</property>
